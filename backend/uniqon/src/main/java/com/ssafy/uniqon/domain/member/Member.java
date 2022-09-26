@@ -22,6 +22,7 @@ public class Member extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "member_id")
     private Long id;
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
@@ -54,4 +55,10 @@ public class Member extends BaseEntity {
     public void changeId(Long memberId) {
         this.id = memberId;
     }
+
+    public void updateMember(String password, String nickname){
+        this.password = password;
+        this.nickname = nickname;
+    }
+
 }

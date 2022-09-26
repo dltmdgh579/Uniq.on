@@ -1,17 +1,18 @@
 insert into member (created_date, last_modified_date, email, member_type, name, nickname, password, wallet_address)
-values (now(), now(), "aa@naver.com", "INVESTOR", "AAA", "aaa", "$2a$10$Fq/c/lgxWYldTv/t.aQEjOcpiOqbZcqAUJnvCQx78wjbh6E3oUXpG", "0XA"),
-       (now(), now(), "bb@naver.com", "INVESTOR", "BBB", "bbb", "$2a$10$Fq/c/lgxWYldTv/t.aQEjOcpiOqbZcqAUJnvCQx78wjbh6E3oUXpG", "0XB"),
-       (now(), now(), "cc@naver.com", "INVESTOR", "CCC", "ccc", "$2a$10$Fq/c/lgxWYldTv/t.aQEjOcpiOqbZcqAUJnvCQx78wjbh6E3oUXpG", "0XC"),
-       (now(), now(), "dd@naver.com", "STARTUP", "DDD", "ddd", "$2a$10$Fq/c/lgxWYldTv/t.aQEjOcpiOqbZcqAUJnvCQx78wjbh6E3oUXpG", "0XD"),
-       (now(), now(), "ee@naver.com", "STARTUP", "EEE", "eee", "$2a$10$Fq/c/lgxWYldTv/t.aQEjOcpiOqbZcqAUJnvCQx78wjbh6E3oUXpG", "0XE");
+values (now(), now(), "aa@naver.com", "ADMIN", "AAA", "aaa", "$2a$10$Fq/c/lgxWYldTv/t.aQEjOcpiOqbZcqAUJnvCQx78wjbh6E3oUXpG", "0XA"),
+       (now(), now(), "bb@naver.com", "USER", "BBB", "bbb", "$2a$10$Fq/c/lgxWYldTv/t.aQEjOcpiOqbZcqAUJnvCQx78wjbh6E3oUXpG", "0XB"),
+       (now(), now(), "cc@naver.com", "USER", "CCC", "ccc", "$2a$10$Fq/c/lgxWYldTv/t.aQEjOcpiOqbZcqAUJnvCQx78wjbh6E3oUXpG", "0XC"),
+       (now(), now(), "dd@naver.com", "USER", "DDD", "ddd", "$2a$10$Fq/c/lgxWYldTv/t.aQEjOcpiOqbZcqAUJnvCQx78wjbh6E3oUXpG", "0XD"),
+       (now(), now(), "ee@naver.com", "USER", "EEE", "eee", "$2a$10$Fq/c/lgxWYldTv/t.aQEjOcpiOqbZcqAUJnvCQx78wjbh6E3oUXpG", "0XE"),
+       (now(), now(), "test@naver.com", "USER", "test", "test", "$2a$10$BlTLOFbU79iOq9rm34.vVub.bULEw/9iPf1wkKxJ1qu3DhA1eMka.", "0XF");
 
 insert into startup (created_date, last_modified_date, description, business_plan, cur_total_price
                     , discord_url, end_date, enroll_status, goal_price, image_nft, invest_count, is_finished, is_goal, nft_count
                     , price_per_nft, road_map, reject_reason, startup_name, title, member_id)
 values (now(), now(), "startup D입니다", null, 0, null,
-        null, null, 0, null, 0, false, false, 0, 0, null, null, null, "startup D", 4),
+        now(), null, 10, null, 0, false, false, 0, 0, null, null, null, "startup D", 4),
        (now(), now(), "startup E입니다", null, 0, null,
-        null, null, 0, null, 0, false, false, 0, 0, null, null, null, "startup E", 5);
+        now(), null, 10, null, 0, false, false, 0, 0, null, null, null, "startup E", 5);
 
 insert into startup_question (created_date, last_modified_date, question, member_id, startup_id)
 values (now(), now(), "질문1", 1, 1),
@@ -37,3 +38,29 @@ insert into community_comment (created_date, last_modified_date, content, member
 values (now(), now(), "Content Test", 1, null, 1),
        (now(), now(), "Content Test", 2, 1, 1),
        (now(), now(), "Content Test", 3, 1, 1);
+
+insert into invest_history (created_date, last_modified_date, invest_status, member_id, startup_id)
+values (now(), now(), "INVESTING", 1, 1),
+       (now(), now(), "INVESTING", 2, 1),
+       (now(), now(), "INVESTING", 3, 1),
+       (now(), now(), "INVESTING", 1, 2),
+       (now(), now(), "INVESTING", 2, 2);
+
+insert into alarm  (created_date, last_modified_date, content, is_read, member_id)
+values (now(), now(), "예약한 펀딩이 성공했습니다 !!", false, 1),
+       (now(), now(), "예약한 펀딩이 실패했습니다 !!", false, 1),
+       (now(), now(), "예약한 펀딩이 성공했습니다 !!", false, 2),
+       (now(), now(), "예약한 펀딩이 실패했습니다 !!", true, 2),
+       (now(), now(), "예약한 펀딩이 실패했습니다 !!", false, 3),
+       (now(), now(), "예약한 펀딩이 성공했습니다 !!", false, 4),
+       (now(), now(), "SSF를 입금하시겠습니까 ?", false, 4),
+       (now(), now(), "예약한 펀딩이 성공했습니다 !!", true, 5),
+       (now(), now(), "예약한 펀딩이 실패했습니다 !!", false, 5),
+       (now(), now(), "예약한 펀딩이 성공했습니다 !!", false, 6),
+       (now(), now(), "SSF를 입금하시겠습니까 ?", true, 6),
+       (now(), now(), "입금이 완료되었습니다 !!", false, 6);
+
+insert into startup_favorite (created_date, last_modified_date, is_fav, member_id, startup_id)
+values (now(), now(), true, 1, 1),
+       (now(), now(), false, 1, 2);
+

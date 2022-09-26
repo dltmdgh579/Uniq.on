@@ -1,13 +1,22 @@
 package com.ssafy.uniqon.service.startup;
 
+import com.ssafy.uniqon.dto.startup.StartupDetailResponseDto;
 import com.ssafy.uniqon.dto.startup.StartupRequestDto;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.rendering.ImageType;
+import org.apache.pdfbox.rendering.PDFRenderer;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -30,16 +39,16 @@ class StartupServiceTest {
                 .managerNumber("010-1234-5678")
                 .managerName("test")
                 .startupName("startupTest")
-                .goalPrice(1000)
+                .goalPrice(new Double(1000))
                 .nftCount(20)
                 .title("스타트업 test title")
                 .build();
-
     }
 
     @Test
-    public void 테스트() {
-        System.out.println(new Double(4) / 5 * 100);
+    public void 투자상세정보() {
+        StartupDetailResponseDto startupDetailResponseDto = startupService.startupDetail(2L, 1L);
+        System.out.println(startupDetailResponseDto);
     }
 
 }
